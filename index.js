@@ -48,7 +48,7 @@ function setMENU() {
         data.forEach(el => {
             if(el.url){
                 itc++;
-                $('<div id="knl0" tipo="'+el.tipo+'" url="'+el.url+'" tabindex="0">'+
+                $('<div class="knl0" tipo="'+el.tipo+'" url="'+el.url+'" tabindex="0">'+
                     '</div>').appendTo('#xbody');
             }
         });        
