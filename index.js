@@ -42,7 +42,7 @@ function setINIC() {
 function setMENU() {
     $('body').empty();
     ito = location.href.split('#')[1] || 'menu';
-    $('body').css({ background: 'black', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' });
+    $('body').css({ background: 'rgba(64,64,64,1)', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' });
     var d0 = location.href.split('#')[1] || 'menu';
     $('<div id="xbody"></div>').css({
         position: 'absolute', left: '1px', top: '1px', right: '1px', bottom: '1px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
