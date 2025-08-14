@@ -16,6 +16,7 @@ function KScripts(scripts, callback) {
 }
 
 function setINIC() {
+    console.log('cargando');
     KScripts(
         [
             "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js",
@@ -27,6 +28,7 @@ function setINIC() {
 }
 
 function setMENU() {
+    $('body').empty();
     $('body').css({ background: 'black', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' });
     var d0 = location.href.split('#')[1] || 'menu';
     $('<div id="xbody"></div>').css({
