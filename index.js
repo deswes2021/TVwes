@@ -53,7 +53,7 @@ function setMENU() {
         data.forEach(el => {
             if (el.url) {
                 itc++;
-                $('<div class="knl0" tipo="' + el.tipo + '" url="' + el.url + '" tabindex="0">' +
+                $('<div class="knl0" id="'+itc+'" tipo="' + el.tipo + '" url="' + el.url + '" tabindex="0">' +
                     '<input class="knl1" type="image" src="' + el.logo + '" onerror="this.onerror=null;">' +
                     '<input class="knl2" type="button" value="' + el.nombre + '">' +
                     '</div>').appendTo('#xplayer');
@@ -105,7 +105,7 @@ function setMENU() {
         $('.knl0').css({
             background: 'rgba(0,0,0,0.5)', margin: '5px', padding: '10px', paddingBottom: '0px', border: '1px solid silver',
             borderRadius: '5px', userSelect: 'none', pointerEvents: 'auto', display: 'grid'
-        });
+        })on('click',function(){ its = parseInt($(this).attr('id')); selKNL(0); });
         $('.knl1').css({
             background: 'rgba(102, 100, 100, 0.5)', border: '1px solid silver', userSelect: 'none', pointerEvents: 'none',
             borderRadius: '5px', width: '280px', height: '130px'
