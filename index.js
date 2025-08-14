@@ -68,15 +68,15 @@ function setMENU() {
             borderRadius:'5px', width:'280px', height:'130px'
         });
         $('.knl2').css({
-            background:'transparent', userSelect:'none', pointerEvents:'none', width:'280px', height:'35px', border:'none',
+            background:'transparent', userSelect:'none', pointerEvents:'none', width:'280px', height:'35px', border:'0px solid red',
             color:'white', lineHeight:'0.85', textTransform:'uppercase'
         });
-        selKNL();
+        selKNL(0);
     }
     return false;
 }
 
-function selKNL(){
+function selKNL(opt){
     try {
         if (its < 1) { its = 1; }
         if (its > itc) { its = itc; }
