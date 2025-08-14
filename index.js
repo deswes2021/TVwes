@@ -209,9 +209,6 @@ function setPLAYER(vurl){
                 youtube: { autoplay: 1, controls: 0, modestbranding: 1, rel: 0, showinfo: 0, fs: 0, iv_load_policy: 3, mute: 0 },
                 playback: { playInline: true }
             }).on(Clappr.Events.PLAYER_PLAY, () => { setEPLAYER('iframe', true); });
-    } else if (/(\/activar|\.html)/i.test(vurl)) {        
-        setIFRAME(vurl, vopc);
-        return;
     }
     /*--ACTION-PLAY--------------------------------------------------------------------------------------------------*/
     function setEPLAYER(FOptc, FPlay) {
