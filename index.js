@@ -115,7 +115,7 @@ function setMENU() {
         $('.knl0').css({
             background: 'rgba(0,0,0,0.5)', margin: '5px', padding: '10px', paddingBottom: '0px', border: '1px solid silver',
             borderRadius: '5px', userSelect: 'none', pointerEvents: 'auto', display: 'grid'
-        }).on('click',function(){ its = parseInt($(this).attr('id')); selKNL(0); });
+        }).on('click',function(){ its = parseInt($(this).attr('id')); selKNL(1); });
         $('.knl1').css({
             background: 'rgba(102, 100, 100, 0.5)', border: '1px solid silver', userSelect: 'none', pointerEvents: 'none',
             borderRadius: '5px', width: '280px', height: '130px'
@@ -256,8 +256,9 @@ function setPLAYER(vurl){
                 player.play();
                 infspm('Play');
             }
-        } else if (ex.code === 'Backspace' || kCode === 8) {
-            location.replace('./index2.html#' + vopc);
+        } else if (ex.key === 'Backspace' || ex.keyCode === 8) { 
+            var nh = getHH();
+            location.replace('./index.html?'+nh);
         } else if (ex.code === 'ArrowUp' || kCode === 38) {
             nVol = Math.min(player.getVolume() + 5, 100);
             player.setVolume(nVol);
@@ -286,7 +287,31 @@ function setPLAYER(vurl){
 }
 
 function setIFRAME(zurl){
-    
+    $('body').empty();
+    $('<iframe ' +
+        'id="frmplayer"' +
+        ' allow="encrypted-media"' +
+        ' src="' + vurl + '"' +
+        ' width="100%"' +
+        ' height="100%"' +
+        ' scrolling="no"' +
+        ' frameBorder="0"' +
+        ' allowfullscreen' +
+        ' sandbox="allow-scripts allow-same-origin allow-top-navigation allow-forms"' +
+        //' sandbox="allow-top-navigation allow-scripts allow-forms"' +
+        ' tabindex="0"></iframe>').appendTo('body');
+    /*--CSS---------------------------------------------------------------------------------------------------------*/
+    $('#frmplayer').css({
+        position: 'absolute', backgroundColor: 'black', margin: '0', padding: '0', userSelect: 'none',
+        pointerEvents: 'all', overflow: 'auto', left: '1px', top: '1px', right: '1px', bottom: '1px'
+    });
+    /*--KEYDOWN-----------------------------------------------------------------------------------------------------*/
+    $(document).off('keydown').on('keydown', function (ex) {
+        if (ex.key === 'Backspace' || ex.keyCode === 8) { 
+            var nh = getHH();
+            location.replace('./index.html?'+nh);
+        }
+    }).off('click').on('click', function () { });
     return false;
 }
 
