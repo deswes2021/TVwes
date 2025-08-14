@@ -40,10 +40,11 @@ function setMENU() {
         userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
         border: '1px solid silver', borderRadius: '5px', display:'flex', flexWrap:'wrap', justifyContent:'center', alignContent:'center'
     }).appendTo('#xbody');
-    /*------------------------------------------------------------------------------------*/
+    /*--GET-LIST---------------------------------------------------------------------------------*/
     setLST(function(data){
         console.log(data);
     });
+    /*--SET-CSS----------------------------------------------------------------------------------*/
     return false;
 }
 
