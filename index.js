@@ -49,9 +49,8 @@ function setMENU() {
         border: '1px solid silver', borderRadius: '5px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center'
     }).appendTo('body');
     $('<div id="xplayer"></div>').css({
-        userSelect: 'none', pointerEvents: 'none', overflow: 'hidden', maxWidth: '99%', maxHeight: '99%', border: '1px solid silver',
-        borderRadius: '5px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', overflowX: 'hidden', overflowY: 'scroll',
-        scrollbarWidth: 'none'
+        userSelect: 'none', pointerEvents: 'none', overflow: 'hidden', maxWidth: '99%', maxHeight: '99%', display: 'flex', flexWrap: 'wrap',
+        justifyContent: 'center', overflowX: 'hidden', overflowY: 'scroll', scrollbarWidth: 'none'
     }).appendTo('#xbody');
     /*--GET-LIST---------------------------------------------------------------------------------*/
     itc = 0;
