@@ -1,5 +1,5 @@
 var its, itc, ito;
-
+var Clappr;
 /*--CARGAR SCRIPT-------------------*/
 function KScripts(scripts, callback) {
     let i = 0;
@@ -27,7 +27,6 @@ function KScripts(scripts, callback) {
 
 /*--LISTA_SCRIPT-------------------*/
 function setINIC() {
-    console.log('cargando');
     KScripts(
         [
             "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js",
