@@ -50,7 +50,7 @@ function setMENU() {
             if(el.url){
                 itc++;
                 $('<div class="knl0" tipo="'+el.tipo+'" url="'+el.url+'" tabindex="0">'+
-                    '<input class="knl1" type="image" src="'+el.logo+'">'+
+                    '<input class="knl1" type="image" src="'+el.logo+'" onerror="this.onerror=null;">'+
                     '<input class="knl2" type="button" value="'+el.nombre+'">'+
                     '</div>').appendTo('#xplayer');
             }
@@ -61,13 +61,13 @@ function setMENU() {
         its = parseInt(localStorage.getItem(ito))||1;
         $('.knl0').css({
             background:'rgba(0,0,0,0.5)', margin:'5px', padding:'10px', paddingBottom:'10px', border:'1px solid silver',
-            userSelect:'none', pointerEvents:'auto', display:'grid'
+            borderRadius:'5px', userSelect:'none', pointerEvents:'auto', display:'grid'
         });
         $('.knl1').css({
             background:'rgba(102, 100, 100, 0.5)', border:'1px solid silver', userSelect:'none', pointerEvents:'none',
-            width:'280px', height:'130px'
+            borderRadius:'5px', width:'280px', height:'130px'
         });
-        $('.knl1').css({
+        $('.knl2').css({
             background:'transparent', userSelect:'none', pointerEvents:'none', width:'280px', height:'35px', color:'white',
             lineHeight:'0.85', textTransform:'uppercase'
         });
