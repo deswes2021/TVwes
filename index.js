@@ -135,7 +135,7 @@ function selKNL(opt) {
         d0.animate({ scrollTop: sPos }, 100);
         /*----------------------------------------*/
         localStorage.setItem(ito, its);
-        if (opt === 1) { }
+        if (opt === 1) { opKNL(); }
     } catch (erx) { console.error('Error: ' + erx); }
     return false;
 };
@@ -150,7 +150,10 @@ function getHH() {
     return ho;
 }
 
-
+/*--KNLS-SELECTION------------------*/
+function opKNL() {
+    return false;
+}
 
 
 
