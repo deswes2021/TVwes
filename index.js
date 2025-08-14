@@ -1,4 +1,6 @@
-var its,itc,ito;
+var its, itc, ito;
+
+/*--CARGAR SCRIPT-------------------*/
 function KScripts(scripts, callback) {
     let cargados = 0;
     let total = scripts.length;
@@ -16,6 +18,7 @@ function KScripts(scripts, callback) {
     });
 }
 
+/*--LISTA_SCRIPT-------------------*/
 function setINIC() {
     console.log('cargando');
     KScripts(
@@ -29,54 +32,95 @@ function setINIC() {
     return false;
 }
 
+/*--KNLS-MENU------------------*/
 function setMENU() {
     $('body').empty();
-    ito = location.href.split('#')[1]||'menu';
+    ito = location.href.split('#')[1] || 'menu';
     $('body').css({ background: 'black', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' });
     var d0 = location.href.split('#')[1] || 'menu';
     $('<div id="xbody"></div>').css({
         position: 'absolute', left: '1px', top: '1px', right: '1px', bottom: '1px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
-        border: '1px solid silver', borderRadius: '5px', display:'flex', flexWrap:'wrap', justifyContent:'center', alignContent:'center'
+        border: '1px solid silver', borderRadius: '5px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center'
     }).appendTo('body');
     $('<div id="xplayer"></div>').css({
-        userSelect: 'none', pointerEvents: 'none', overflow: 'hidden', maxWidth:'99%', maxHeight:'99%', border: '1px solid silver',
-        borderRadius: '5px', display:'flex', flexWrap:'wrap', justifyContent:'center', overflowX:'hidden', overflowY:'scroll',
-        scrollbarWidth:'none'
+        userSelect: 'none', pointerEvents: 'none', overflow: 'hidden', maxWidth: '99%', maxHeight: '99%', border: '1px solid silver',
+        borderRadius: '5px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', overflowX: 'hidden', overflowY: 'scroll',
+        scrollbarWidth: 'none'
     }).appendTo('#xbody');
     /*--GET-LIST---------------------------------------------------------------------------------*/
-    itc=0;
-    setLST(function(data){        
+    itc = 0;
+    setLST(function (data) {
         data.forEach(el => {
-            if(el.url){
+            if (el.url) {
                 itc++;
-                $('<div class="knl0" tipo="'+el.tipo+'" url="'+el.url+'" tabindex="0">'+
-                    '<input class="knl1" type="image" src="'+el.logo+'" onerror="this.onerror=null;">'+
-                    '<input class="knl2" type="button" value="'+el.nombre+'">'+
+                $('<div class="knl0" tipo="' + el.tipo + '" url="' + el.url + '" tabindex="0">' +
+                    '<input class="knl1" type="image" src="' + el.logo + '" onerror="this.onerror=null;">' +
+                    '<input class="knl2" type="button" value="' + el.nombre + '">' +
                     '</div>').appendTo('#xplayer');
             }
-        });        
+        });
+    });
+    /*--KEYDOWN----------------------------------------------------------------------------------*/
+    $(document).off('keydown').on('keydown', function (ex) {
+        try {
+            var kCode = ex.keyCode || window.event;
+            /*---------------------------------------*/
+            var dpl = $('#xplayer');
+            var dpi = dpl.children();
+            var dti = dpi.filter(function () { return $(this).position().top === dpi.first().position().top; });
+            var dil = dti.length;
+            /*---------------------------------------*/
+            if (ex.code === 'ArrowLeft' || kCode === 37) {
+                its--;
+                selKNL(0);
+            } else if (ex.code === 'ArrowUp' || kCode === 38) {
+                its -= dil;
+                selKNL(0);
+            } else if (ex.code === 'ArrowRight' || kCode === 39) {
+                its++;
+                selKNL(0);
+            } else if (ex.code === 'ArrowDown' || kCode === 40) {
+                its += dil;
+                selKNL(0);
+            } else if (ex.code === 'Enter' || kCode === 13) {
+                selKNL(1);
+            } else if (ex.code === 'Backspace' || kCode === 8) {
+                var nh = getHH();
+                if (!/(menu)/i.test(ito)) { location.replace('./index.html?' + nh); }
+            } else if (ex.preventDefault) {
+                ex.preventDefault();
+            } else { ex.returnValue = false; }
+        } catch (erx) { console.error('Error: ' + erx); }
+        return false;
+    }).off('contextmenu').on('contextmenu', function (ex) {//Desactiva menu contextual
+        if (ex.preventDefault) { ex.preventDefault(); }
+        else { ex.returnValue = false; }
+    }).off('click').on('click', function (ex) {//Control click en document
+        if (ex.preventDefault) { ex.preventDefault(); }
+        else { ex.returnValue = false; }
     });
     /*--SET-CSS----------------------------------------------------------------------------------*/
-    if(itc>0){
-        its = parseInt(localStorage.getItem(ito))||1;
+    if (itc > 0) {
+        its = parseInt(localStorage.getItem(ito)) || 1;
         $('.knl0').css({
-            background:'rgba(0,0,0,0.5)', margin:'5px', padding:'10px', paddingBottom:'0px', border:'1px solid silver',
-            borderRadius:'5px', userSelect:'none', pointerEvents:'auto', display:'grid'
+            background: 'rgba(0,0,0,0.5)', margin: '5px', padding: '10px', paddingBottom: '0px', border: '1px solid silver',
+            borderRadius: '5px', userSelect: 'none', pointerEvents: 'auto', display: 'grid'
         });
         $('.knl1').css({
-            background:'rgba(102, 100, 100, 0.5)', border:'1px solid silver', userSelect:'none', pointerEvents:'none',
-            borderRadius:'5px', width:'280px', height:'130px'
+            background: 'rgba(102, 100, 100, 0.5)', border: '1px solid silver', userSelect: 'none', pointerEvents: 'none',
+            borderRadius: '5px', width: '280px', height: '130px'
         });
         $('.knl2').css({
-            background:'transparent', userSelect:'none', pointerEvents:'none', width:'280px', height:'35px', border:'0px solid red',
-            color:'white', lineHeight:'0.85', textTransform:'uppercase'
+            background: 'transparent', userSelect: 'none', pointerEvents: 'none', width: '280px', height: '35px', border: '0px solid red',
+            color: 'white', lineHeight: '0.85', textTransform: 'uppercase'
         });
         selKNL(0);
     }
     return false;
 }
 
-function selKNL(opt){
+/*--KNLS-SELECTION------------------*/
+function selKNL(opt) {
     try {
         if (its < 1) { its = 1; }
         if (its > itc) { its = itc; }
@@ -91,12 +135,20 @@ function selKNL(opt){
         d0.animate({ scrollTop: sPos }, 100);
         /*----------------------------------------*/
         localStorage.setItem(ito, its);
-        if (opt === 1) {  }
+        if (opt === 1) { }
     } catch (erx) { console.error('Error: ' + erx); }
     return false;
 };
 
-
+/*--SET-HORAS----------------------*/
+function getHH() {
+    var now = new Date();
+    var hh = String(now.getHours()).padStart(2, '0');
+    var mm = String(now.getMinutes()).padStart(2, '0');
+    var ss = String(now.getSeconds()).padStart(2, '0');
+    var ho = hh + mm + ss;
+    return ho;
+}
 
 
 
