@@ -164,6 +164,7 @@ function getHH() {
 function opKNL() {
     var d1 = $('#' + its).attr('url');
     var nh = getHH();
+    console.log(d1);
     if (/\.(mp4|m3u8|ytb)/i.test(d1)) {
         if (!/(menu)/i.test(ito)) { location.replace('./index.html?' + nh + '#' + d1); }
     } else if (/(\.html|\/activar)$/i.test(d1)) {
