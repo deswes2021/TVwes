@@ -2,21 +2,28 @@ var its, itc, ito;
 
 /*--CARGAR SCRIPT-------------------*/
 function KScripts(scripts, callback) {
-    let cargados = 0;
-    let total = scripts.length;
-    function scriptListo() {
-        cargados++;
-        if (cargados === total && typeof callback === "function") { callback(); }
-    }
-
-    scripts.forEach(function (src) {
+    let i = 0;
+    function cargarSiguiente() {
+        if (i >= scripts.length) {
+            if (typeof callback === "function") callback();
+            return;
+        }
         let script = document.createElement("script");
-        script.src = src;
-        script.onload = scriptListo;
-        script.onerror = function () { scriptListo(); };
+        script.src = scripts[i];
+        script.onload = function () {
+            i++;
+            cargarSiguiente();
+        };
+        script.onerror = function () {
+            console.error("Error cargando:", scripts[i]);
+            i++;
+            cargarSiguiente();
+        };
         document.head.appendChild(script);
-    });
+    }
+    cargarSiguiente();
 }
+
 
 /*--LISTA_SCRIPT-------------------*/
 function setINIC() {
