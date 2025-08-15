@@ -52,7 +52,7 @@ function setMENU() {
     $('<div id="xbody"></div>').css({
         position: 'absolute', left: '1px', top: '1px', right: '1px', bottom: '1px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
         border: '1px solid silver', borderRadius: '5px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center',
-        backgroundImage: `url(${imgfnd})`, backgroundRepeat: 'repeat', backgroundSize: '35px'
+        backgroundImage: 'url('+imgfnd+')', backgroundRepeat: 'repeat', backgroundSize: '35px'
     }).appendTo('body');
     $('<div id="xplayer"></div>').css({
         userSelect: 'none', pointerEvents: 'none', overflow: 'hidden', maxWidth: '99%', maxHeight: '99%', display: 'flex', flexWrap: 'wrap',
