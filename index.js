@@ -49,7 +49,6 @@ function setINIC() {
 function setMENU() {
     $('body').empty();
     $('body').css({ background: 'rgba(64,64,64,1)', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' });
-    var d0 = location.href.split('#')[1] || 'menu';
     $('<div id="xbody"></div>').css({
         position: 'absolute', left: '1px', top: '1px', right: '1px', bottom: '1px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
         border: '1px solid silver', borderRadius: '5px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center'
@@ -247,9 +246,10 @@ function setPLAYER(vurl) {
             timeId = setTimeout(function () { div.textContent = ""; }, 2000);
         }
         /*--CSS---------------------------------------------------------------------------------------------------------*/
+        $('body').css({ background: 'rgba(64,64,64,1)', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden' });
         $('#xplayer').css({
-            position: 'absolute', margin: '0', padding: '0', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
-            width: '100vw', height: '100vh', objectFit: 'fill'
+            position: 'absolute', margin: '0px', padding: '0px', userSelect: 'none', pointerEvents: 'none', overflow: 'hidden',
+            width: '100vw', height: '100vh', objectFit: 'fill', left:'1px', top:'1px', right:'1px', bottom:'1px',
         });
         /*--KEYDOWN-----------------------------------------------------------------------------------------------------*/
         $(document).off('keydown').on('keydown', function (ex) {
